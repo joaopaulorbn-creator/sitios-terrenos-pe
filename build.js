@@ -5,7 +5,8 @@ const ROOT = __dirname, OUT = path.join(ROOT, 'dist');
 const read = f => JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8'));
 const cfg = read('data/config.json');
 const SITE = (process.env.URL || '').replace(/\/$/, '');
-const all = read('data/imoveis.json').filter(r => r.status !== 'oculto');
+const todos = read('data/imoveis.json');
+const all = todos.filter(r => r.status !== 'oculto');
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const brl = n => 'R$ ' + Number(n).toLocaleString('pt-BR', { maximumFractionDigits: 0 });
@@ -124,6 +125,60 @@ $('sendm')?.addEventListener('click',async()=>{const m=M[cur],b=$('sendm');
 $('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(LINK);toast('Link copiado')}catch(e){toast(LINK)}});}</script></body></html>`;
 }
 
+
+// Área de gestão (/admin/): excluir fotos e vídeos um por um. Protegida por senha (função admin-midia).
+function admin() {
+  const L = todos.map(r => ({ id: r.id, t: r.titulo, c: r.cidade, m: [...(r.videos || []).map(p => ({ p, v: 1 })), ...(r.fotos || []).map(p => ({ p, v: 0 }))] }));
+  return `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Gestão de mídias · ${esc(cfg.nome)}</title><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="/style.css">
+<style>
+.login{max-width:380px;margin:48px auto;display:grid;gap:12px}.login input{height:48px;border-radius:10px;border:1px solid var(--line);padding:0 14px;font-size:16px}
+.imv{margin:0 0 34px}.imv h2{font-size:28px}.imv .where{margin-bottom:12px}
+.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.mi{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);display:flex;flex-direction:column}
+.mi .th{position:relative;aspect-ratio:1;background:#0b1a12}.mi img,.mi video{width:100%;height:100%;object-fit:cover;display:block}
+.mi .lb{position:absolute;left:6px;top:6px;font-size:12px;background:var(--gold);color:var(--green);padding:0 6px;border-radius:6px}
+.mi .nm{font-size:13px;color:var(--mut);padding:6px 8px 0;overflow-wrap:anywhere}
+.mi .bt{display:flex;flex-wrap:wrap;gap:6px;padding:8px}.mi button{flex:1;min-height:44px;border-radius:8px;border:1px solid #b3261e;background:transparent;color:#b3261e;font-weight:600}
+.mi button.sure{background:#b3261e;color:#fff}.mi button.no{border-color:var(--line);color:var(--ink);flex:0 0 auto;padding:0 12px}
+.mi.gone{opacity:.45}.mi.gone .bt{color:var(--mut);font-size:14px;justify-content:center;align-items:center;min-height:60px}
+.note{color:var(--mut);font-size:15px;margin:0 0 20px}.sticky{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--line);margin-bottom:20px}
+.sticky select{height:44px;border-radius:10px;border:1px solid var(--line);padding:0 10px;font-size:16px;background:var(--card)}
+</style></head><body>
+<header class="top"><div class="wrap"><a class="brand" href="/">${SEAL}<div><h1>Gestão de mídias</h1><p>Excluir fotos e vídeos, um por um · ${esc(cfg.nome)}</p></div></a></div></header>
+<main><div class="wrap" id="app">
+<form class="login" id="login"><label for="senha"><b>Senha da gestão</b></label><input id="senha" type="password" autocomplete="current-password" required><button class="btn" type="submit">Entrar</button><p class="note" id="lerr" role="alert"></p></form>
+</div></main><div class="toast" id="toast" role="status"></div>
+<script>{const L=${JSON.stringify(L).replace(/</g, '\\u003c')};
+const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let senha='',gone=new Set(),busy=false;
+try{senha=sessionStorage.getItem('adm-s')||'';gone=new Set(JSON.parse(sessionStorage.getItem('adm-gone')||'[]'))}catch(e){}
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),3500)}
+async function api(b){const r=await fetch('/api/admin-midia',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({senha,...b})});let j={};try{j=await r.json()}catch(e){}return{ok:r.ok,status:r.status,...j}}
+function item(r,m,i){const k=r.id+'|'+m.p,g=gone.has(k);
+ return '<div class="mi'+(g?' gone':'')+'" data-k="'+esc(k)+'"><div class="th">'+(m.v?'<video src="/'+esc(m.p)+'#t=1" muted playsinline preload="metadata"></video><span class="play">▶</span>':'<img src="/'+esc(m.p)+'" alt="" loading="lazy">')+(i===L.find(x=>x.id===r.id).m.findIndex(x=>!x.v)&&!m.v?'<span class="lb">Capa</span>':'')+'</div>'
+ +'<div class="nm">'+(m.v?'Vídeo · ':'Foto · ')+esc(m.p.split('/').pop())+'</div><div class="bt">'+(g?'Excluída · sai do site em ~1 min':'<button type="button" data-del>Excluir</button>')+'</div></div>'}
+function render(){const f=$('fil')?.value||'';
+ $('app').innerHTML='<div class="sticky"><select id="fil" aria-label="Imóvel"><option value="">Todos os imóveis</option>'+L.map(r=>'<option value="'+r.id+'"'+(r.id===f?' selected':'')+'>'+esc(r.t)+'</option>').join('')+'</select><span class="note" style="margin:0">Cada exclusão atualiza o site em cerca de 1 minuto. Não dá para desfazer pelo painel.</span></div>'
+ +L.filter(r=>!f||r.id===f).map(r=>'<section class="imv"><h2>'+esc(r.t)+'</h2><div class="where">'+esc(r.c||'')+' · <a href="/imovel/'+r.id+'/" target="_blank" rel="noopener">ver no site</a></div>'
+ +(r.m.length?'<div class="mg">'+r.m.map((m,i)=>item(r,m,i)).join('')+'</div>':'<p class="note">Sem fotos ou vídeos.</p>')+'</section>').join('');
+ $('fil').addEventListener('change',render)}
+$('app').addEventListener('click',async e=>{const b=e.target.closest('button');if(!b||!b.closest('.mi'))return;const box=b.closest('.mi'),bt=box.querySelector('.bt');
+ if(b.hasAttribute('data-del')){bt.innerHTML='<button type="button" class="sure" data-ok>Confirmar</button><button type="button" class="no" data-no>Voltar</button>';return}
+ if(b.hasAttribute('data-no')){bt.innerHTML='<button type="button" data-del>Excluir</button>';return}
+ if(b.hasAttribute('data-ok')){if(busy){toast('Aguarde a exclusão anterior terminar');return}busy=true;b.disabled=true;b.textContent='Excluindo…';
+  const [id,arquivo]=box.dataset.k.split('|');
+  try{const r=await api({acao:'excluir',id,arquivo});
+   if(r.ok||r.status===404){gone.add(box.dataset.k);try{sessionStorage.setItem('adm-gone',JSON.stringify([...gone]))}catch(x){}box.classList.add('gone');bt.textContent='Excluída · sai do site em ~1 min';toast(r.ok?'Arquivo excluído':r.erro)}
+   else{if(r.status===401){senha='';try{sessionStorage.removeItem('adm-s')}catch(x){}location.reload();return}bt.innerHTML='<button type="button" data-del>Excluir</button>';toast(r.erro||'Não foi possível excluir')}
+  }catch(x){bt.innerHTML='<button type="button" data-del>Excluir</button>';toast('Sem conexão. Tente de novo.')}
+  busy=false}});
+async function entrar(s){senha=s;const r=await api({acao:'entrar'});if(r.ok){try{sessionStorage.setItem('adm-s',s)}catch(x){}render()}else{senha='';$('lerr').textContent=r.erro||'Não foi possível entrar'}}
+$('login').addEventListener('submit',e=>{e.preventDefault();$('lerr').textContent='';entrar($('senha').value)});
+if(senha)entrar(senha);}</script></body></html>`;
+}
+
 // saída
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
@@ -132,5 +187,7 @@ for (const f of ['favicon.svg', 'og.png']) if (fs.existsSync(path.join(ROOT, 'sr
 if (fs.existsSync(path.join(ROOT, 'media'))) fs.cpSync(path.join(ROOT, 'media'), path.join(OUT, 'media'), { recursive: true });
 fs.writeFileSync(path.join(OUT, 'index.html'), home());
 for (const r of all) { const d = path.join(OUT, 'imovel', r.id); fs.mkdirSync(d, { recursive: true }); fs.writeFileSync(path.join(d, 'index.html'), detail(r)); }
+fs.mkdirSync(path.join(OUT, 'admin'), { recursive: true });
+fs.writeFileSync(path.join(OUT, 'admin', 'index.html'), admin());
 fs.writeFileSync(path.join(OUT, '404.html'), head('Página não encontrada', '', abs('/og.png')) + `<main><div class="empty"><h2>Imóvel não encontrado</h2><p>Ele pode ter sido vendido ou removido.</p><p><a class="btn" href="/">Ver imóveis disponíveis</a></p></div></main>${foot}</body></html>`);
 console.log(`Site gerado: ${all.length} imóveis em dist/`);
