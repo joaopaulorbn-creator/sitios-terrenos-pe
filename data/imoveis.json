@@ -9,12 +9,29 @@
     "local": "A 4,5 km da cidade",
     "area": "8 hectares",
     "preco": null,
-    "caracteristicas": ["Porteira fechada", "Todo cercado, com piquetes e pasto alto", "Açude e cacimba natural", "Curral, brete e galpão", "2 casas de apoio", "Energia elétrica", "Escritura, ITR e CCIR", "20 cabeças de gado (opcional na negociação)"],
+    "caracteristicas": [
+      "Porteira fechada",
+      "Todo cercado, com piquetes e pasto alto",
+      "Açude e cacimba natural",
+      "Curral, brete e galpão",
+      "2 casas de apoio",
+      "Energia elétrica",
+      "Escritura, ITR e CCIR",
+      "20 cabeças de gado (opcional na negociação)"
+    ],
     "descricao": "Chegou, começou: estrutura pronta para criar gado, com espaço para lazer e moradia. Propriedade versátil para gerar renda com gado, ter lazer ou morar com tranquilidade.",
     "maps": "",
     "instagram": "",
-    "fotos": [],
-    "videos": [],
+    "fotos": [
+      "media/sitio-porteira-fechada-saire/foto-01.jpg",
+      "media/sitio-porteira-fechada-saire/foto-02.jpg",
+      "media/sitio-porteira-fechada-saire/foto-03.jpg",
+      "media/sitio-porteira-fechada-saire/foto-04.jpg"
+    ],
+    "videos": [
+      "media/sitio-porteira-fechada-saire/video-01.mp4",
+      "media/sitio-porteira-fechada-saire/video-02.mp4"
+    ],
     "criadoEm": "2026-11-09"
   },
   {
@@ -27,12 +44,34 @@
     "local": "Entre Chã Grande e Amaraji, a 1,5 km da PE-71",
     "area": "4,5 hectares",
     "preco": null,
-    "caracteristicas": ["Mais de 1.000 pés de graviola", "Cerca de R$ 70 mil por safra de graviola", "200 pés de banana", "Riacho", "Poço", "Cacimba", "Energia elétrica"],
+    "caracteristicas": [
+      "Mais de 1.000 pés de graviola",
+      "Cerca de R$ 70 mil por safra de graviola",
+      "200 pés de banana",
+      "Riacho",
+      "Poço",
+      "Cacimba",
+      "Energia elétrica"
+    ],
     "descricao": "Um sítio que já chega pagando as contas: terra boa, água e produção. Investimento que rende desde o primeiro dia.",
     "maps": "",
     "instagram": "",
-    "fotos": [],
-    "videos": [],
+    "fotos": [
+      "media/sitio-graviola-4-5ha/foto-01.jpg",
+      "media/sitio-graviola-4-5ha/foto-02.jpg",
+      "media/sitio-graviola-4-5ha/foto-03.jpg",
+      "media/sitio-graviola-4-5ha/foto-04.jpg",
+      "media/sitio-graviola-4-5ha/foto-05.jpg",
+      "media/sitio-graviola-4-5ha/foto-06.jpg",
+      "media/sitio-graviola-4-5ha/foto-07.jpg",
+      "media/sitio-graviola-4-5ha/foto-08.jpg",
+      "media/sitio-graviola-4-5ha/foto-09.jpg",
+      "media/sitio-graviola-4-5ha/foto-10.jpg"
+    ],
+    "videos": [
+      "media/sitio-graviola-4-5ha/video-01.mp4",
+      "media/sitio-graviola-4-5ha/video-02.mp4"
+    ],
     "criadoEm": "2026-11-08"
   },
   {
@@ -45,12 +84,27 @@
     "local": "A 2 km do Paraíso Pedra Branca e 7 km da Cachoeira do Urubu",
     "area": "2,5 hectares",
     "preco": null,
-    "caracteristicas": ["Casa", "Garagem grande", "Poço", "Mini campo", "Ótimo clima", "Ambiente reservado e calmo"],
+    "caracteristicas": [
+      "Casa",
+      "Garagem grande",
+      "Poço",
+      "Mini campo",
+      "Ótimo clima",
+      "Ambiente reservado e calmo"
+    ],
     "descricao": "Lazer, sossego e estrutura pronta. Ideal para casa de campo, fim de semana com a família ou para morar com mais qualidade de vida.",
     "maps": "",
     "instagram": "",
-    "fotos": [],
-    "videos": [],
+    "fotos": [
+      "media/sitio-buenos-aires/foto-01.jpg",
+      "media/sitio-buenos-aires/foto-02.jpg",
+      "media/sitio-buenos-aires/foto-03.jpg",
+      "media/sitio-buenos-aires/foto-04.jpg"
+    ],
+    "videos": [
+      "media/sitio-buenos-aires/video-01.mp4",
+      "media/sitio-buenos-aires/video-02.mp4"
+    ],
     "criadoEm": "2026-11-07"
   },
   {
@@ -63,12 +117,38 @@
     "local": "A 3 km da pista",
     "area": "10 hectares",
     "preco": null,
-    "caracteristicas": ["3 nascentes de água", "Pasto alto, pronto para gado", "Mata nativa com trilha", "Vista para o paredão de pedra", "Clima fresco o ano todo", "Estrada de fácil acesso"],
+    "caracteristicas": [
+      "3 nascentes de água",
+      "Pasto alto, pronto para gado",
+      "Mata nativa com trilha",
+      "Vista para o paredão de pedra",
+      "Clima fresco o ano todo",
+      "Estrada de fácil acesso"
+    ],
     "descricao": "Dez hectares até o pé do morro, com trilha pela mata nativa até a parte mais alta. Um lugar de calma e natureza, para construir sua casa de lazer de fim de semana ou para morar.",
     "maps": "",
     "instagram": "",
-    "fotos": [],
-    "videos": [],
+    "fotos": [
+      "media/sitio-por-do-sol/foto-01.jpg",
+      "media/sitio-por-do-sol/foto-02.jpg",
+      "media/sitio-por-do-sol/foto-03.jpg",
+      "media/sitio-por-do-sol/foto-04.jpg",
+      "media/sitio-por-do-sol/foto-05.jpg",
+      "media/sitio-por-do-sol/foto-06.jpg",
+      "media/sitio-por-do-sol/foto-07.jpg",
+      "media/sitio-por-do-sol/foto-08.jpg",
+      "media/sitio-por-do-sol/foto-09.jpg",
+      "media/sitio-por-do-sol/foto-10.jpg",
+      "media/sitio-por-do-sol/foto-11.jpg",
+      "media/sitio-por-do-sol/foto-12.jpg",
+      "media/sitio-por-do-sol/foto-13.jpg",
+      "media/sitio-por-do-sol/foto-14.jpg",
+      "media/sitio-por-do-sol/foto-15.jpg",
+      "media/sitio-por-do-sol/foto-16.jpg"
+    ],
+    "videos": [
+      "media/sitio-por-do-sol/video-01.mp4"
+    ],
     "criadoEm": "2026-11-06"
   },
   {
@@ -81,12 +161,32 @@
     "local": "A 5 km da BR",
     "area": "4 hectares",
     "preco": null,
-    "caracteristicas": ["600 pés de banana comprida", "3 mil pés de eucalipto", "3 açudes com criação de tilápias", "2 poços artesianos", "Galinheiro", "Plantação de capim", "Galpão", "Fruteiras", "Casa", "Escriturado"],
+    "caracteristicas": [
+      "600 pés de banana comprida",
+      "3 mil pés de eucalipto",
+      "3 açudes com criação de tilápias",
+      "2 poços artesianos",
+      "Galinheiro",
+      "Plantação de capim",
+      "Galpão",
+      "Fruteiras",
+      "Casa",
+      "Escriturado"
+    ],
     "descricao": "Aqui você não começa do zero: chega, assume e colhe. Estrutura pronta para criar animais, com casa para morar ou passar os fins de semana com a família, e pronto para gerar renda desde o primeiro dia.",
     "maps": "",
     "instagram": "",
-    "fotos": [],
-    "videos": [],
+    "fotos": [
+      "media/sitio-vitoria-4ha/foto-01.jpg",
+      "media/sitio-vitoria-4ha/foto-02.jpg",
+      "media/sitio-vitoria-4ha/foto-03.jpg",
+      "media/sitio-vitoria-4ha/foto-04.jpg",
+      "media/sitio-vitoria-4ha/foto-05.jpg",
+      "media/sitio-vitoria-4ha/foto-06.jpg"
+    ],
+    "videos": [
+      "media/sitio-vitoria-4ha/video-01.mp4"
+    ],
     "criadoEm": "2026-11-05"
   },
   {
@@ -99,12 +199,32 @@
     "local": "A 400 m do Posto Petrovia",
     "area": "7.000 m² (0,75 hectare)",
     "preco": 300000,
-    "caracteristicas": ["Riacho dentro do terreno", "Açude com água", "Todo cercado", "Escriturado", "Energia elétrica na porta", "Árvores frutíferas e muita sombra", "Pasto formado", "Clima frio", "Vista linda da região"],
+    "caracteristicas": [
+      "Riacho dentro do terreno",
+      "Açude com água",
+      "Todo cercado",
+      "Escriturado",
+      "Energia elétrica na porta",
+      "Árvores frutíferas e muita sombra",
+      "Pasto formado",
+      "Clima frio",
+      "Vista linda da região"
+    ],
     "descricao": "Oportunidade para lazer, pertinho de tudo e com clima frio. Espaço de sobra para criar animais, plantar ou construir a sua chácara.",
     "maps": "",
     "instagram": "",
-    "fotos": [],
-    "videos": [],
+    "fotos": [
+      "media/terreno-0-75ha-petrovia/foto-01.jpg",
+      "media/terreno-0-75ha-petrovia/foto-02.jpg",
+      "media/terreno-0-75ha-petrovia/foto-03.jpg",
+      "media/terreno-0-75ha-petrovia/foto-04.jpg",
+      "media/terreno-0-75ha-petrovia/foto-05.jpg",
+      "media/terreno-0-75ha-petrovia/foto-06.jpg",
+      "media/terreno-0-75ha-petrovia/foto-07.jpg"
+    ],
+    "videos": [
+      "media/terreno-0-75ha-petrovia/video-01.mp4"
+    ],
     "criadoEm": "2026-11-04"
   },
   {
@@ -117,12 +237,41 @@
     "local": "Pertinho do Hotel Highlander",
     "area": "2.400 m² (20 × 120 m)",
     "preco": 150000,
-    "caracteristicas": ["Mais de 20 tipos de frutas plantadas", "Horta com feijão, chuchu, cana e ervas", "Poço com bomba", "Sombra de mangueira", "Cantinho para as crianças", "Clima gostoso"],
+    "caracteristicas": [
+      "Mais de 20 tipos de frutas plantadas",
+      "Horta com feijão, chuchu, cana e ervas",
+      "Poço com bomba",
+      "Sombra de mangueira",
+      "Cantinho para as crianças",
+      "Clima gostoso"
+    ],
     "descricao": "Terreno que já é praticamente um pomar pronto: banana comprida e banana maçã, manga rosa, jaca, jabuticaba, graviola, caju, acerola, pitanga, maracujá, abacate, coco e muito mais. Perfeito para construir sua casa de campo, descansar no fim de semana ou viver mais perto da natureza.",
     "maps": "",
     "instagram": "",
-    "fotos": [],
-    "videos": [],
+    "fotos": [
+      "media/terreno-pomar-highlander/foto-01.jpg",
+      "media/terreno-pomar-highlander/foto-02.jpg",
+      "media/terreno-pomar-highlander/foto-03.jpg",
+      "media/terreno-pomar-highlander/foto-04.jpg",
+      "media/terreno-pomar-highlander/foto-05.jpg",
+      "media/terreno-pomar-highlander/foto-06.jpg",
+      "media/terreno-pomar-highlander/foto-07.jpg",
+      "media/terreno-pomar-highlander/foto-08.jpg",
+      "media/terreno-pomar-highlander/foto-09.jpg",
+      "media/terreno-pomar-highlander/foto-10.jpg",
+      "media/terreno-pomar-highlander/foto-11.jpg",
+      "media/terreno-pomar-highlander/foto-12.jpg",
+      "media/terreno-pomar-highlander/foto-13.jpg",
+      "media/terreno-pomar-highlander/foto-14.jpg",
+      "media/terreno-pomar-highlander/foto-15.jpg",
+      "media/terreno-pomar-highlander/foto-16.jpg",
+      "media/terreno-pomar-highlander/foto-17.jpg",
+      "media/terreno-pomar-highlander/foto-18.jpg",
+      "media/terreno-pomar-highlander/foto-19.jpg"
+    ],
+    "videos": [
+      "media/terreno-pomar-highlander/video-01.mp4"
+    ],
     "criadoEm": "2026-11-03"
   },
   {
@@ -135,12 +284,29 @@
     "local": "Entre Chã Grande e Amaraji, a 600 m da PE-71",
     "area": "1,5 hectare",
     "preco": null,
-    "caracteristicas": ["Nascente de água própria", "Quase 1 hectare de graviola plantada", "Potencial de até R$ 30 mil por safra", "A 600 m da PE-71", "Acesso fácil"],
+    "caracteristicas": [
+      "Nascente de água própria",
+      "Quase 1 hectare de graviola plantada",
+      "Potencial de até R$ 30 mil por safra",
+      "A 600 m da PE-71",
+      "Acesso fácil"
+    ],
     "descricao": "Terra produtiva, com água e acesso fácil, entre Chã Grande e Amaraji. Serve para o fim de semana com a família, para uma casa de campo ou como investimento em terra perto da rodovia.",
     "maps": "",
     "instagram": "",
-    "fotos": [],
-    "videos": [],
+    "fotos": [
+      "media/sitio-graviola-1-5ha/foto-01.jpg",
+      "media/sitio-graviola-1-5ha/foto-02.jpg",
+      "media/sitio-graviola-1-5ha/foto-03.jpg",
+      "media/sitio-graviola-1-5ha/foto-04.jpg",
+      "media/sitio-graviola-1-5ha/foto-05.jpg",
+      "media/sitio-graviola-1-5ha/foto-06.jpg"
+    ],
+    "videos": [
+      "media/sitio-graviola-1-5ha/video-01.mp4",
+      "media/sitio-graviola-1-5ha/video-02.mp4",
+      "media/sitio-graviola-1-5ha/video-03.mp4"
+    ],
     "criadoEm": "2026-11-02"
   }
 ]
