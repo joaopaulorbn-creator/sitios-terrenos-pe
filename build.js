@@ -81,7 +81,7 @@ function detail(r) {
   const media = [...(r.videos || []).map(p => ({ p, v: true })), ...(r.fotos || []).map(p => ({ p, v: false }))];
   const link = abs(page(r));
   const shareMsg = `${adText(r)}\n\nVeja fotos e vídeos: ${link}`;
-  const visit = waNum() ? `https://wa.me/${waNum()}?text=${encodeURIComponent(`Olá! Tenho interesse no imóvel "${r.titulo}". Gostaria de agendar uma visita.\n${link}`)}` : `https://instagram.com/${cfg.instagram}`;
+  const visit = waNum() ? `https://api.whatsapp.com/send?phone=${waNum()}&text=${encodeURIComponent(`Olá! Tenho interesse no imóvel "${r.titulo}". Gostaria de agendar uma visita.\n${link}`)}` : `https://instagram.com/${cfg.instagram}`;
   const desc = [r.area, where(r), (r.caracteristicas || []).slice(0, 3).join(' · ')].filter(Boolean).join(' · ');
   const og = r.fotos?.length ? abs(url(r.fotos[0])) : abs('/og.png');
   const M = media.map((m, i) => ({ src: url(m.p), v: m.v, name: `${r.id}-${i + 1}${path.extname(m.p)}` }));
@@ -94,7 +94,7 @@ ${M.length > 1 ? `<div class="thumbs" id="thumbs">${M.map((m, i) => `<button typ
 <aside class="sheet"><div class="kind">${esc(r.tipo || 'Imóvel')}</div><h2>${esc(r.titulo)}</h2><div class="where">${esc(where(r))}</div>${priceHtml(r)}
 <dl>${r.area ? `<dt>Área</dt><dd>${esc(r.area)}</dd>` : ''}${r.cidade ? `<dt>Cidade</dt><dd>${esc(r.cidade)}</dd>` : ''}<dt>Situação</dt><dd>${r.status === 'vendido' ? 'Vendido' : r.status === 'reservado' ? 'Reservado' : 'Disponível'}</dd></dl>
 <div class="acts">
-<a class="btn wa" href="https://wa.me/?text=${encodeURIComponent(shareMsg)}" target="_blank" rel="noopener">${WA} Enviar imóvel para um cliente</a>
+<a class="btn wa" href="https://api.whatsapp.com/send?text=${encodeURIComponent(shareMsg)}" target="_blank" rel="noopener">${WA} Enviar imóvel para um cliente</a>
 <button class="btn ghost" type="button" id="copy">Copiar link do imóvel</button>
 ${r.status === 'vendido' ? '' : `<a class="btn" href="${esc(visit)}" target="_blank" rel="noopener">${waNum() ? 'Agendar visita pelo WhatsApp' : 'Falar no Instagram'}</a>`}
 ${r.instagram ? `<a class="btn ghost" href="${esc(r.instagram)}" target="_blank" rel="noopener">Ver vídeo no Instagram</a>` : ''}
@@ -113,7 +113,7 @@ document.querySelectorAll('#thumbs button').forEach(x=>x.setAttribute('aria-curr
 if(M.length)show(0);
 $('thumbs')?.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(+b.dataset.i)});
 $('sendm')?.addEventListener('click',async()=>{const m=M[cur],b=$('sendm');
-  const fallback=()=>{window.open('https://wa.me/?text='+encodeURIComponent(TITLE+'\\n'+location.origin+m.src+'\\n\\nVeja todas as fotos e vídeos: '+LINK),'_blank')};
+  const fallback=()=>{window.open('https://api.whatsapp.com/send?text='+encodeURIComponent(TITLE+'\\n'+location.origin+m.src+'\\n\\nVeja todas as fotos e vídeos: '+LINK),'_blank')};
   if(!navigator.canShare){fallback();return}
   if(ready&&ready.i===cur){try{await navigator.share({files:[ready.f]})}catch(e){if(e.name!=='AbortError')fallback()}return}
   b.disabled=true;b.lastChild.textContent=' Preparando arquivo…';
