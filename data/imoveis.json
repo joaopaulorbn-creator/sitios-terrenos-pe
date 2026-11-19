@@ -1,5 +1,90 @@
 [
   {
+    "id": "propriedade-saire-13ha",
+    "titulo": "Propriedade de 13 hectares com casa sede em Sairé",
+    "tipo": "Sítio",
+    "status": "disponivel",
+    "destaque": true,
+    "cidade": "Sairé",
+    "local": "A 8 km da cidade",
+    "area": "13 hectares",
+    "preco": 1100000,
+    "caracteristicas": [
+      "Casa sede de tijolinho com varanda",
+      "3 quartos, sendo 1 suíte",
+      "Curral, brete e balança",
+      "Açude na propriedade",
+      "Energia monofásica e trifásica",
+      "1.000 pés de laranja e muita fruteira",
+      "Toda cercada"
+    ],
+    "descricao": "Isso não é um sítio, é uma fazenda pronta. São 13 hectares a 8 km da cidade de Sairé, com casa sede de tijolinho e varanda em volta, estrutura completa para gado, açude e mil pés de laranja. Pronta para produzir, criar gado, investir em terra ou viver bem perto da natureza.",
+    "maps": "",
+    "instagram": "",
+    "fotos": [
+      "media/propriedade-saire-13ha/foto-01.jpg",
+      "media/propriedade-saire-13ha/foto-02.jpg",
+      "media/propriedade-saire-13ha/foto-03.jpg",
+      "media/propriedade-saire-13ha/foto-04.jpg",
+      "media/propriedade-saire-13ha/foto-05.jpg",
+      "media/propriedade-saire-13ha/foto-06.jpg",
+      "media/propriedade-saire-13ha/foto-07.jpg",
+      "media/propriedade-saire-13ha/foto-08.jpg",
+      "media/propriedade-saire-13ha/foto-09.jpg",
+      "media/propriedade-saire-13ha/foto-10.jpg",
+      "media/propriedade-saire-13ha/foto-11.jpg",
+      "media/propriedade-saire-13ha/foto-12.jpg",
+      "media/propriedade-saire-13ha/foto-13.jpg"
+    ],
+    "videos": [
+      "media/propriedade-saire-13ha/video-01.mp4"
+    ],
+    "criadoEm": "2026-11-18"
+  },
+  {
+    "id": "sitio-saire-2ha",
+    "titulo": "Sítio de 2 hectares com 1.000 pés de laranja em Sairé",
+    "tipo": "Sítio",
+    "status": "disponivel",
+    "destaque": false,
+    "cidade": "Sairé",
+    "local": "A 8 km da cidade",
+    "area": "2 hectares",
+    "preco": 240000,
+    "caracteristicas": [
+      "1.000 pés de laranja",
+      "Banana, milho e melancia",
+      "Água por gravidade, cacimba e açude",
+      "Casinha de apoio",
+      "Energia elétrica",
+      "Escritura",
+      "Todo cercado",
+      "Preço negociável"
+    ],
+    "descricao": "Sítio formado, pronto para produzir: mil pés de laranja na encosta com a serra ao fundo, além de banana, milho e melancia. Água por gravidade, cacimba e açude, casinha de apoio e energia. Preço para vender rápido, e ainda negociável.",
+    "maps": "",
+    "instagram": "",
+    "fotos": [
+      "media/sitio-saire-2ha/foto-01.jpg",
+      "media/sitio-saire-2ha/foto-02.jpg",
+      "media/sitio-saire-2ha/foto-03.jpg",
+      "media/sitio-saire-2ha/foto-04.jpg",
+      "media/sitio-saire-2ha/foto-05.jpg",
+      "media/sitio-saire-2ha/foto-06.jpg",
+      "media/sitio-saire-2ha/foto-07.jpg",
+      "media/sitio-saire-2ha/foto-08.jpg",
+      "media/sitio-saire-2ha/foto-09.jpg",
+      "media/sitio-saire-2ha/foto-10.jpg",
+      "media/sitio-saire-2ha/foto-11.jpg",
+      "media/sitio-saire-2ha/foto-12.jpg",
+      "media/sitio-saire-2ha/foto-13.jpg"
+    ],
+    "videos": [
+      "media/sitio-saire-2ha/video-01.mp4"
+    ],
+    "criadoEm": "2026-11-17"
+  },
+  {
     "id": "sitio-porteira-fechada-saire",
     "titulo": "Sítio porteira fechada",
     "tipo": "Sítio",
