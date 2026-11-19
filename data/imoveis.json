@@ -1,5 +1,46 @@
 [
   {
+    "id": "sitio-saire-2ha-duas-casas",
+    "titulo": "Sítio de 2 hectares com duas casas a 3 km de Sairé",
+    "tipo": "Sítio",
+    "status": "disponivel",
+    "destaque": false,
+    "cidade": "Sairé",
+    "local": "A 3 km da cidade",
+    "area": "2 hectares",
+    "preco": 350000,
+    "caracteristicas": [
+      "Casa sede",
+      "Casa de apoio",
+      "Água por gravidade",
+      "Energia elétrica",
+      "Escritura",
+      "Todo cercado",
+      "A 3 km da cidade"
+    ],
+    "descricao": "Dois hectares, duas casas e escritura, a só 3 km da cidade de Sairé. Casa sede ampla e arejada, casa de apoio para caseiro, visita ou ferramentas, água por gravidade sem bomba e sem conta de luz, e energia ligada. Para morar, descansar ou começar a produzir no seu próprio pedaço de terra.",
+    "maps": "",
+    "instagram": "",
+    "fotos": [
+      "media/sitio-saire-2ha-duas-casas/foto-01.jpg",
+      "media/sitio-saire-2ha-duas-casas/foto-02.jpg",
+      "media/sitio-saire-2ha-duas-casas/foto-03.jpg",
+      "media/sitio-saire-2ha-duas-casas/foto-04.jpg",
+      "media/sitio-saire-2ha-duas-casas/foto-05.jpg",
+      "media/sitio-saire-2ha-duas-casas/foto-06.jpg",
+      "media/sitio-saire-2ha-duas-casas/foto-07.jpg",
+      "media/sitio-saire-2ha-duas-casas/foto-08.jpg",
+      "media/sitio-saire-2ha-duas-casas/foto-09.jpg",
+      "media/sitio-saire-2ha-duas-casas/foto-10.jpg",
+      "media/sitio-saire-2ha-duas-casas/foto-11.jpg",
+      "media/sitio-saire-2ha-duas-casas/foto-12.jpg"
+    ],
+    "videos": [
+      "media/sitio-saire-2ha-duas-casas/video-01.mp4"
+    ],
+    "criadoEm": "2026-11-18"
+  },
+  {
     "id": "propriedade-saire-13ha",
     "titulo": "Propriedade de 13 hectares com casa sede em Sairé",
     "tipo": "Sítio",
