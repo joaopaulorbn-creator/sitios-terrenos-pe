@@ -19,6 +19,9 @@ const page = r => `/imovel/${r.id}/`;
 const digits = s => String(s || '').replace(/\D/g, '');
 const waNum = () => { const d = digits(cfg.whatsapp); return d && !d.startsWith('55') ? '55' + d : d; };
 
+const waLink = msg => `https://api.whatsapp.com/send?phone=${waNum()}&text=${encodeURIComponent(msg)}`;
+const fab = msg => waNum() ? `<a class="fab" href="${esc(waLink(msg))}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">${WA}</a>` : '';
+const MSG_GERAL = 'Olá! Vi o catálogo de sítios e terrenos e gostaria de mais informações.';
 const LAND = `<svg viewBox="0 0 320 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="240" fill="#1d4a33"/><circle cx="236" cy="70" r="24" fill="#c9a13b"/><path d="M0 160c50-34 92-40 150-16s112 20 170-18v114H0z" fill="#2c6646"/><path d="M0 194c60-22 120-24 170-7s100 9 150-11v64H0z" fill="#123524"/><path d="M44 196v-26m-9 9 9-9 9 9M268 186v-22m-8 7 8-7 8 7" stroke="#c9a13b" stroke-width="3" fill="none"/></svg>`;
 const SEAL = `<svg class="seal" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="25" fill="none" stroke="#c9a13b" stroke-width="2"/><path d="M6 34c7-8 13-10 20-6s12 3 20-4v14a20 20 0 0 1-40 0z" fill="#c9a13b"/><path d="M6 38c8-5 15-6 22-3s11 2 18-2" stroke="#123524" stroke-width="2" fill="none"/><circle cx="34" cy="17" r="5" fill="#c9a13b"/></svg>`;
 const WA = `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>`;
@@ -74,7 +77,7 @@ if(o==='pa')L.sort((a,b)=>(a.p??1e15)-(b.p??1e15));else if(o==='pd')L.sort((a,b)
 const ids=new Set(L.map(d=>d.id));for(const el of g.children)el.hidden=!ids.has(el.dataset.id);
 L.forEach(d=>g.appendChild(g.querySelector('[data-id="'+d.id+'"]')));
 $('count').textContent=L.length+(L.length===1?' imóvel':' imóveis');$('none').hidden=L.length>0}
-for(const i of ['q','tipo','city','ord','sold'])$(i).addEventListener(i==='q'?'input':'change',run);}</script></body></html>`;
+for(const i of ['q','tipo','city','ord','sold'])$(i).addEventListener(i==='q'?'input':'change',run);}</script>${fab(MSG_GERAL)}</body></html>`;
 }
 
 function detail(r) {
@@ -94,9 +97,11 @@ ${M.length > 1 ? `<div class="thumbs" id="thumbs">${M.map((m, i) => `<button typ
 <aside class="sheet"><div class="kind">${esc(r.tipo || 'Imóvel')}</div><h2>${esc(r.titulo)}</h2><div class="where">${esc(where(r))}</div>${priceHtml(r)}
 <dl>${r.area ? `<dt>Área</dt><dd>${esc(r.area)}</dd>` : ''}${r.cidade ? `<dt>Cidade</dt><dd>${esc(r.cidade)}</dd>` : ''}<dt>Situação</dt><dd>${r.status === 'vendido' ? 'Vendido' : r.status === 'reservado' ? 'Reservado' : 'Disponível'}</dd></dl>
 <div class="acts">
-<a class="btn wa" href="https://api.whatsapp.com/send?text=${encodeURIComponent(shareMsg)}" target="_blank" rel="noopener">${WA} Enviar imóvel para um cliente</a>
+
+
+${r.status === 'vendido' ? '' : `<a class="btn wa" href="${esc(visit)}" target="_blank" rel="noopener">${waNum() ? `${WA} Falar no WhatsApp` : 'Falar no Instagram'}</a>`}
+<a class="btn ghost" href="https://api.whatsapp.com/send?text=${encodeURIComponent(shareMsg)}" target="_blank" rel="noopener">${WA} Enviar imóvel para um cliente</a>
 <button class="btn ghost" type="button" id="copy">Copiar link do imóvel</button>
-${r.status === 'vendido' ? '' : `<a class="btn" href="${esc(visit)}" target="_blank" rel="noopener">${waNum() ? 'Agendar visita pelo WhatsApp' : 'Falar no Instagram'}</a>`}
 ${r.instagram ? `<a class="btn ghost" href="${esc(r.instagram)}" target="_blank" rel="noopener">Ver vídeo no Instagram</a>` : ''}
 ${r.maps ? `<a class="btn ghost" href="${esc(r.maps)}" target="_blank" rel="noopener">Ver localização no mapa</a>` : ''}
 </div></aside>
@@ -122,7 +127,7 @@ $('sendm')?.addEventListener('click',async()=>{const m=M[cur],b=$('sendm');
     ready={i:cur,f};try{await navigator.share({files:[f]});b.disabled=false;show(cur)}
     catch(e){b.disabled=false;b.lastChild.textContent=' Toque de novo para enviar';ready={i:cur,f};}
   }catch(e){b.disabled=false;show(cur);fallback()}});
-$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(LINK);toast('Link copiado')}catch(e){toast(LINK)}});}</script></body></html>`;
+$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(LINK);toast('Link copiado')}catch(e){toast(LINK)}});}</script>${fab(r.status === 'vendido' ? MSG_GERAL : `Olá! Tenho interesse no imóvel "${r.titulo}". Gostaria de agendar uma visita.\n${link}`)}</body></html>`;
 }
 
 
@@ -189,5 +194,5 @@ fs.writeFileSync(path.join(OUT, 'index.html'), home());
 for (const r of all) { const d = path.join(OUT, 'imovel', r.id); fs.mkdirSync(d, { recursive: true }); fs.writeFileSync(path.join(d, 'index.html'), detail(r)); }
 fs.mkdirSync(path.join(OUT, 'admin'), { recursive: true });
 fs.writeFileSync(path.join(OUT, 'admin', 'index.html'), admin());
-fs.writeFileSync(path.join(OUT, '404.html'), head('Página não encontrada', '', abs('/og.png')) + `<main><div class="empty"><h2>Imóvel não encontrado</h2><p>Ele pode ter sido vendido ou removido.</p><p><a class="btn" href="/">Ver imóveis disponíveis</a></p></div></main>${foot}</body></html>`);
+fs.writeFileSync(path.join(OUT, '404.html'), head('Página não encontrada', '', abs('/og.png')) + `<main><div class="empty"><h2>Imóvel não encontrado</h2><p>Ele pode ter sido vendido ou removido.</p><p><a class="btn" href="/">Ver imóveis disponíveis</a></p></div></main>${foot}${fab(MSG_GERAL)}</body></html>`);
 console.log(`Site gerado: ${all.length} imóveis em dist/`);
