@@ -1,5 +1,54 @@
 [
   {
+    "id": "sitio-mandacaru-gravata",
+    "titulo": "Sítio Mandacaru em Gravatá",
+    "tipo": "Sítio",
+    "status": "disponivel",
+    "destaque": true,
+    "cidade": "Gravatá",
+    "local": "10 km da cidade, 6 km da PE",
+    "area": "2 hectares",
+    "preco": 260000,
+    "caracteristicas": [
+      "Casa com 3 quartos, sala e cozinha",
+      "Varanda em volta",
+      "Poço e nascente",
+      "Energia elétrica",
+      "Escritura",
+      "Pomar: graviola, laranja, acerola, banana, manga e cana",
+      "A 6 km da PE"
+    ],
+    "descricao": "Sítio de 2 hectares em Gravatá, com casa de 3 quartos e varanda, pomar formado, nascente, poço e energia. Fica a 10 km da cidade e a 6 km da PE. Para morar, descansar no fim de semana ou viver perto da natureza, com o clima de serra de Gravatá.",
+    "maps": "",
+    "instagram": "",
+    "fotos": [
+      "media/sitio-mandacaru-gravata/foto-01.jpg",
+      "media/sitio-mandacaru-gravata/foto-02.jpg",
+      "media/sitio-mandacaru-gravata/foto-03.jpg",
+      "media/sitio-mandacaru-gravata/foto-04.jpg",
+      "media/sitio-mandacaru-gravata/foto-05.jpg",
+      "media/sitio-mandacaru-gravata/foto-06.jpg",
+      "media/sitio-mandacaru-gravata/foto-07.jpg",
+      "media/sitio-mandacaru-gravata/foto-08.jpg",
+      "media/sitio-mandacaru-gravata/foto-09.jpg",
+      "media/sitio-mandacaru-gravata/foto-10.jpg",
+      "media/sitio-mandacaru-gravata/foto-11.jpg",
+      "media/sitio-mandacaru-gravata/foto-12.jpg",
+      "media/sitio-mandacaru-gravata/foto-13.jpg",
+      "media/sitio-mandacaru-gravata/foto-14.jpg",
+      "media/sitio-mandacaru-gravata/foto-15.jpg",
+      "media/sitio-mandacaru-gravata/foto-16.jpg",
+      "media/sitio-mandacaru-gravata/foto-17.jpg",
+      "media/sitio-mandacaru-gravata/foto-18.jpg",
+      "media/sitio-mandacaru-gravata/foto-19.jpg",
+      "media/sitio-mandacaru-gravata/foto-20.jpg"
+    ],
+    "videos": [
+      "media/sitio-mandacaru-gravata/video-01.mp4"
+    ],
+    "criadoEm": "2026-11-18"
+  },
+  {
     "id": "sitio-saire-2ha-duas-casas",
     "titulo": "Sítio de 2 hectares com duas casas a 3 km de Sairé",
     "tipo": "Sítio",
