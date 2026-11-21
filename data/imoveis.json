@@ -421,12 +421,13 @@
     "titulo": "Terreno de 0,75 ha perto do Posto Petrovia",
     "tipo": "Terreno",
     "status": "disponivel",
-    "destaque": false,
+    "destaque": true,
     "cidade": "Chã Grande",
     "local": "A 400 m do Posto Petrovia",
     "area": "7.000 m² (0,75 hectare)",
-    "preco": 300000,
+    "preco": 250000,
     "caracteristicas": [
+      "BAIXOU: de R$ 300 mil por R$ 250 mil",
       "Riacho dentro do terreno",
       "Açude com água",
       "Todo cercado",
@@ -450,6 +451,7 @@
       "media/terreno-0-75ha-petrovia/foto-07.jpg"
     ],
     "videos": [
+      "media/terreno-0-75ha-petrovia/video-02.mp4",
       "media/terreno-0-75ha-petrovia/video-01.mp4"
     ],
     "criadoEm": "2026-11-04"
