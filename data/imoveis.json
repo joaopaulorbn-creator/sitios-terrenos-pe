@@ -1,5 +1,57 @@
 [
   {
+    "id": "sitio-saire-3ha-cachoeira",
+    "titulo": "Sítio de 3,2 hectares com cachoeira em Sairé",
+    "tipo": "Sítio",
+    "status": "disponivel",
+    "destaque": true,
+    "cidade": "Sairé",
+    "local": "9 km da cidade, 3 km da pista (BR Gravatá–Mandacaru)",
+    "area": "3,2 hectares",
+    "preco": 600000,
+    "caracteristicas": [
+      "Cachoeira na propriedade",
+      "Casa com 3 quartos, varanda e rede",
+      "Cozinha planejada",
+      "2 garagens",
+      "Riacho e açude",
+      "Água mineral por gravidade",
+      "Documentação em dia",
+      "A 3 km da pista"
+    ],
+    "descricao": "Uma casa perfeita, cachoeira dentro da propriedade e a só 3 km da pista. São 3,2 hectares em Sairé, perto da BR que liga Gravatá a Mandacaru, com casa de 3 quartos, varanda, duas garagens, riacho, açude e água mineral por gravidade. Documentação em dia.",
+    "maps": "",
+    "instagram": "",
+    "fotos": [
+      "media/sitio-saire-3ha-cachoeira/foto-01.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-02.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-03.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-04.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-05.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-06.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-07.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-08.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-09.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-10.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-11.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-12.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-13.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-14.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-15.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-16.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-17.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-18.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-19.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-20.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-21.jpg",
+      "media/sitio-saire-3ha-cachoeira/foto-22.jpg"
+    ],
+    "videos": [
+      "media/sitio-saire-3ha-cachoeira/video-01.mp4"
+    ],
+    "criadoEm": "2026-11-21"
+  },
+  {
     "id": "sitio-mandacaru-gravata",
     "titulo": "Sítio Mandacaru em Gravatá",
     "tipo": "Sítio",
