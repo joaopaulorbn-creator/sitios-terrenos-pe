@@ -1,5 +1,52 @@
 [
   {
+    "id": "mini-sitio-gloria-do-goita",
+    "titulo": "Mini sítio com casa nova em Glória do Goitá",
+    "tipo": "Sítio",
+    "status": "disponivel",
+    "destaque": true,
+    "cidade": "Glória do Goitá",
+    "local": "4 km da PE-50, 7 km de Feira Nova, 10 km de Glória",
+    "area": "6.500 m²",
+    "preco": 210000,
+    "caracteristicas": [
+      "Casa nova com 3 quartos",
+      "Garagem coberta e varanda",
+      "Energia elétrica",
+      "Cisterna de 20 mil litros",
+      "Fruteiras: manga, caju, coqueiro",
+      "Vista privilegiada e clima muito bom",
+      "Escritura particular",
+      "Venda porteira fechada"
+    ],
+    "descricao": "Mini sítio de 6.500 m² em Glória do Goitá, com casa nova de 3 quartos, pomar formado, cisterna de 20 mil litros e energia. Vista privilegiada e clima muito bom, a 4 km da PE-50. Venda porteira fechada, com escritura particular.",
+    "maps": "",
+    "instagram": "",
+    "fotos": [
+      "media/mini-sitio-gloria-do-goita/foto-01.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-02.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-03.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-04.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-05.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-06.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-07.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-08.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-09.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-10.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-11.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-12.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-13.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-14.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-15.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-16.jpg",
+      "media/mini-sitio-gloria-do-goita/foto-17.jpg"
+    ],
+    "videos": [
+      "media/mini-sitio-gloria-do-goita/video-01.mp4"
+    ],
+    "criadoEm": "2026-11-23"
+  },
+  {
     "id": "sitio-saire-2-5ha-producao",
     "titulo": "Sítio de 2,5 hectares pronto pra produzir em Sairé",
     "tipo": "Sítio",
