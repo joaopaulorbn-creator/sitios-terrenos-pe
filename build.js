@@ -1,10 +1,14 @@
 // Gera o site estático do catálogo em dist/ a partir de data/*.json e media/.
-// Uso: node build.js   (no Netlify roda automaticamente a cada push)
+// Uso: node build.js   (no GitHub Pages roda automaticamente a cada push, via .github/workflows/pages.yml)
+// SITE_URL = endereço do site (ex.: https://usuario.github.io); BASE_PATH = subpasta (ex.: /sitios-terrenos-pe)
 const fs = require('fs'), path = require('path');
 const ROOT = __dirname, OUT = path.join(ROOT, 'dist');
 const read = f => JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8'));
 const cfg = read('data/config.json');
-const SITE = (process.env.URL || '').replace(/\/$/, '');
+const SITE = (process.env.SITE_URL || process.env.URL || '').replace(/\/$/, '');
+const BASE = (process.env.BASE_PATH || '').replace(/\/$/, '');
+const REPO = process.env.GITHUB_REPOSITORY || 'joaopaulorbn-creator/sitios-terrenos-pe';
+const P = p => BASE + p;
 const todos = read('data/imoveis.json');
 const all = todos.filter(r => r.status !== 'oculto');
 
@@ -13,9 +17,9 @@ const brl = n => 'R$ ' + Number(n).toLocaleString('pt-BR', { maximumFractionDigi
 const priceHtml = (r, c = 'price') => r.preco ? `<span class="${c}">${brl(r.preco)}</span>` : `<span class="${c} soft">Preço sob consulta</span>`;
 const where = r => [r.local, r.cidade].filter(Boolean).join(', ');
 const ribbon = r => r.status === 'vendido' ? '<span class="rib vendido">Vendido</span>' : r.status === 'reservado' ? '<span class="rib">Reservado</span>' : r.destaque ? '<span class="rib">Destaque</span>' : '';
-const url = p => '/' + String(p).replace(/^\/+/, '').split('/').map(encodeURIComponent).join('/');
+const url = p => BASE + '/' + String(p).replace(/^\/+/, '').split('/').map(encodeURIComponent).join('/');
 const abs = p => SITE + p;
-const page = r => `/imovel/${r.id}/`;
+const page = r => P(`/imovel/${r.id}/`);
 const digits = s => String(s || '').replace(/\D/g, '');
 const waNum = () => { const d = digits(cfg.whatsapp); return d && !d.startsWith('55') ? '55' + d : d; };
 
@@ -32,10 +36,10 @@ function head(title, desc, img, canon) {
 <meta property="og:type" content="website"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
 <meta property="og:image" content="${esc(img)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">${canon ? `<meta property="og:url" content="${esc(canon)}"><link rel="canonical" href="${esc(canon)}">` : ''}
 <meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#123524">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="${P('/favicon.svg')}" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css"></head><body>`;
+<link rel="stylesheet" href="${P('/style.css')}"></head><body>`;
 }
 const foot = `<footer class="foot"><div class="wrap">${esc(cfg.nome)} · <a href="https://instagram.com/${esc(cfg.instagram)}" target="_blank" rel="noopener">@${esc(cfg.instagram)}</a>${cfg.whatsapp ? ` · WhatsApp ${esc(cfg.whatsapp)}` : ''}</div></footer><div class="toast" id="toast" role="status"></div>`;
 
@@ -60,8 +64,8 @@ function home() {
   const disp = list.filter(r => r.status !== 'vendido').length;
   const desc = `${disp} sítios e terrenos à venda em Pernambuco. Fotos, vídeos e informações de cada imóvel.`;
   const data = list.map(r => ({ id: r.id, s: [r.titulo, r.tipo, r.cidade, r.local, r.descricao, ...(r.caracteristicas || [])].join(' ').toLowerCase(), t: r.tipo, c: r.cidade, st: r.status, p: r.preco || null }));
-  return head(`${cfg.nome} · imóveis à venda`, desc, abs('/og.png'), SITE ? SITE + '/' : '') + `
-<header class="top"><div class="wrap"><a class="brand" href="/">${SEAL}<div><h1>${esc(cfg.nome)}</h1><p>Sítios, chácaras e terrenos à venda · @${esc(cfg.instagram)}</p></div></a>
+  return head(`${cfg.nome} · imóveis à venda`, desc, abs(P('/og.png')), SITE ? SITE + '/' : '') + `
+<header class="top"><div class="wrap"><a class="brand" href="${P('/')}">${SEAL}<div><h1>${esc(cfg.nome)}</h1><p>Sítios, chácaras e terrenos à venda · @${esc(cfg.instagram)}</p></div></a>
 <div class="bar"><input id="q" type="search" placeholder="Buscar por cidade, nome ou característica" aria-label="Buscar">
 <select id="tipo" aria-label="Tipo"><option value="">Todos os tipos</option>${tipos.map(t => `<option>${esc(t)}</option>`).join('')}</select>
 <select id="city" aria-label="Cidade"><option value="">Todas as cidades</option>${cidades.map(t => `<option>${esc(t)}</option>`).join('')}</select>
@@ -86,11 +90,11 @@ function detail(r) {
   const shareMsg = `${adText(r)}\n\nVeja fotos e vídeos: ${link}`;
   const visit = waNum() ? `https://api.whatsapp.com/send?phone=${waNum()}&text=${encodeURIComponent(`Olá! Tenho interesse no imóvel "${r.titulo}". Gostaria de agendar uma visita.\n${link}`)}` : `https://instagram.com/${cfg.instagram}`;
   const desc = [r.area, where(r), (r.caracteristicas || []).slice(0, 3).join(' · ')].filter(Boolean).join(' · ');
-  const og = r.fotos?.length ? abs(url(r.fotos[0])) : abs('/og.png');
+  const og = r.fotos?.length ? abs(url(r.fotos[0])) : abs(P('/og.png'));
   const M = media.map((m, i) => ({ src: url(m.p), v: m.v, name: `${r.id}-${i + 1}${path.extname(m.p)}` }));
   return head(`${r.titulo} · ${cfg.nome}`, desc, og, link) + `
-<header class="top"><div class="wrap"><a class="brand" href="/">${SEAL}<div><h1>${esc(cfg.nome)}</h1><p>Sítios, chácaras e terrenos à venda · @${esc(cfg.instagram)}</p></div></a></div></header>
-<main><div class="wrap"><a class="back" href="/">← Ver todos os imóveis</a>
+<header class="top"><div class="wrap"><a class="brand" href="${P('/')}">${SEAL}<div><h1>${esc(cfg.nome)}</h1><p>Sítios, chácaras e terrenos à venda · @${esc(cfg.instagram)}</p></div></a></div></header>
+<main><div class="wrap"><a class="back" href="${P('/')}">← Ver todos os imóveis</a>
 <div class="det"><div class="gal"><div class="stage" id="stage">${M.length ? '' : LAND}</div>
 ${M.length ? `<div class="mbar"><button class="btn wa sm" id="sendm" type="button">${WA} Enviar esta mídia no WhatsApp</button><a class="btn ghost sm" id="dlm" download>Baixar</a></div>` : ''}
 ${M.length > 1 ? `<div class="thumbs" id="thumbs">${M.map((m, i) => `<button type="button" data-i="${i}" aria-current="${i === 0}" aria-label="${m.v ? 'Vídeo' : 'Foto'} ${i + 1}">${m.v ? `<video src="${m.src}#t=1" muted playsinline preload="metadata"></video><span class="play">▶</span>` : `<img src="${m.src}" alt="" loading="lazy">`}</button>`).join('')}</div>` : ''}</div>
@@ -131,12 +135,14 @@ $('copy').addEventListener('click',async()=>{try{await navigator.clipboard.write
 }
 
 
-// Área de gestão (/admin/): excluir fotos e vídeos um por um. Protegida por senha (função admin-midia).
+// Área de gestão (/admin/): excluir fotos e vídeos um por um.
+// O acesso é por um token do GitHub com permissão de escrita no repositório: sem ele, nada pode ser alterado.
+// Cada exclusão vira um commit (remove o arquivo de media/ e a referência em data/imoveis.json) e o site é republicado.
 function admin() {
   const L = todos.map(r => ({ id: r.id, t: r.titulo, c: r.cidade, m: [...(r.videos || []).map(p => ({ p, v: 1 })), ...(r.fotos || []).map(p => ({ p, v: 0 }))] }));
   return `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>Gestão de mídias · ${esc(cfg.nome)}</title><link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="/style.css">
+<meta name="robots" content="noindex,nofollow"><title>Gestão de mídias · ${esc(cfg.nome)}</title><link rel="icon" href="${P('/favicon.svg')}" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="${P('/style.css')}">
 <style>
 .login{max-width:380px;margin:48px auto;display:grid;gap:12px}.login input{height:48px;border-radius:10px;border:1px solid var(--line);padding:0 14px;font-size:16px}
 .imv{margin:0 0 34px}.imv h2{font-size:28px}.imv .where{margin-bottom:12px}
@@ -151,22 +157,38 @@ function admin() {
 .note{color:var(--mut);font-size:15px;margin:0 0 20px}.sticky{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--line);margin-bottom:20px}
 .sticky select{height:44px;border-radius:10px;border:1px solid var(--line);padding:0 10px;font-size:16px;background:var(--card)}
 </style></head><body>
-<header class="top"><div class="wrap"><a class="brand" href="/">${SEAL}<div><h1>Gestão de mídias</h1><p>Excluir fotos e vídeos, um por um · ${esc(cfg.nome)}</p></div></a></div></header>
+<header class="top"><div class="wrap"><a class="brand" href="${P('/')}">${SEAL}<div><h1>Gestão de mídias</h1><p>Excluir fotos e vídeos, um por um · ${esc(cfg.nome)}</p></div></a></div></header>
 <main><div class="wrap" id="app">
-<form class="login" id="login"><label for="senha"><b>Senha da gestão</b></label><input id="senha" type="password" autocomplete="current-password" required><button class="btn" type="submit">Entrar</button><p class="note" id="lerr" role="alert"></p></form>
+<form class="login" id="login"><label for="senha"><b>Chave de acesso (token do GitHub)</b></label><input id="senha" type="password" autocomplete="off" spellcheck="false" required><p class="note" style="margin:0">A chave fica só nesta aba e some ao fechar.</p><button class="btn" type="submit">Entrar</button><p class="note" id="lerr" role="alert"></p></form>
 </div></main><div class="toast" id="toast" role="status"></div>
 <script>{const L=${JSON.stringify(L).replace(/</g, '\\u003c')};
 const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let senha='',gone=new Set(),busy=false;
 try{senha=sessionStorage.getItem('adm-s')||'';gone=new Set(JSON.parse(sessionStorage.getItem('adm-gone')||'[]'))}catch(e){}
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),3500)}
-async function api(b){const r=await fetch('/api/admin-midia',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({senha,...b})});let j={};try{j=await r.json()}catch(e){}return{ok:r.ok,status:r.status,...j}}
+const REPO=${JSON.stringify(REPO)},BASE=${JSON.stringify(BASE)},DATA='data/imoveis.json';
+async function gh(p,o={}){const r=await fetch('https://api.github.com/repos/'+REPO+p,{method:o.method||'GET',cache:'no-store',headers:{authorization:'Bearer '+senha,accept:o.raw?'application/vnd.github.raw+json':'application/vnd.github+json','x-github-api-version':'2022-11-28',...(o.body?{'content-type':'application/json'}:{})},body:o.body?JSON.stringify(o.body):undefined});
+ if(!r.ok){const e=new Error('GitHub '+r.status);e.status=r.status;throw e}return o.raw?r.text():r.json()}
+async function excluir(id,arquivo){const ref=await gh('/git/ref/heads/main'),head=ref.object.sha,c=await gh('/git/commits/'+head);
+ const lista=JSON.parse(await gh('/contents/'+DATA+'?ref='+head,{raw:true})),im=lista.find(r=>r.id===id);if(!im)return{ok:false,status:404,erro:'Imóvel não encontrado.'};
+ const n=(im.fotos||[]).length+(im.videos||[]).length;im.fotos=(im.fotos||[]).filter(p=>p!==arquivo);im.videos=(im.videos||[]).filter(p=>p!==arquivo);
+ if(im.fotos.length+im.videos.length===n)return{ok:false,status:404,erro:'Esse arquivo já tinha saído deste imóvel.'};
+ const emUso=lista.some(r=>[...(r.fotos||[]),...(r.videos||[])].includes(arquivo)),tree=[{path:DATA,mode:'100644',type:'blob',content:JSON.stringify(lista,null,2)}];
+ if(!emUso)tree.push({path:arquivo,mode:'100644',type:'blob',sha:null});
+ const t=await gh('/git/trees',{method:'POST',body:{base_tree:c.tree.sha,tree}}),nc=await gh('/git/commits',{method:'POST',body:{message:'Remove mídia de '+id+': '+arquivo.split('/').pop(),tree:t.sha,parents:[head]}});
+ await gh('/git/refs/heads/main',{method:'PATCH',body:{sha:nc.sha,force:false}});return{ok:true,status:200}}
+async function api(b){try{
+ if(b.acao==='entrar'){const r=await gh('');return r.permissions&&r.permissions.push?{ok:true}:{ok:false,status:403,erro:'Essa chave não tem permissão para alterar o site.'}}
+ if(!/^media\\/[a-z0-9-]+\\/[A-Za-z0-9._-]+$/.test(b.arquivo)||!b.arquivo.startsWith('media/'+b.id+'/'))return{ok:false,status:400,erro:'Arquivo inválido.'};
+ for(let k=0;k<2;k++){try{return await excluir(b.id,b.arquivo)}catch(e){if(e.status===422&&k===0)continue;throw e}}
+}catch(e){return{ok:false,status:e.status===401?401:(e.status||0),erro:e.status===401?'Chave inválida ou vencida.':e.status===403||e.status===404?'Essa chave não tem permissão para alterar o site.':'Não foi possível concluir agora. Tente de novo.'}}}
+
 function item(r,m,i){const k=r.id+'|'+m.p,g=gone.has(k);
- return '<div class="mi'+(g?' gone':'')+'" data-k="'+esc(k)+'"><div class="th">'+(m.v?'<video src="/'+esc(m.p)+'#t=1" muted playsinline preload="metadata"></video><span class="play">▶</span>':'<img src="/'+esc(m.p)+'" alt="" loading="lazy">')+(i===L.find(x=>x.id===r.id).m.findIndex(x=>!x.v)&&!m.v?'<span class="lb">Capa</span>':'')+'</div>'
- +'<div class="nm">'+(m.v?'Vídeo · ':'Foto · ')+esc(m.p.split('/').pop())+'</div><div class="bt">'+(g?'Excluída · sai do site em ~1 min':'<button type="button" data-del>Excluir</button>')+'</div></div>'}
+ return '<div class="mi'+(g?' gone':'')+'" data-k="'+esc(k)+'"><div class="th">'+(m.v?'<video src="'+BASE+'/'+esc(m.p)+'#t=1" muted playsinline preload="metadata"></video><span class="play">▶</span>':'<img src="'+BASE+'/'+esc(m.p)+'" alt="" loading="lazy">')+(i===L.find(x=>x.id===r.id).m.findIndex(x=>!x.v)&&!m.v?'<span class="lb">Capa</span>':'')+'</div>'
+ +'<div class="nm">'+(m.v?'Vídeo · ':'Foto · ')+esc(m.p.split('/').pop())+'</div><div class="bt">'+(g?'Excluída · sai do site em ~2 min':'<button type="button" data-del>Excluir</button>')+'</div></div>'}
 function render(){const f=$('fil')?.value||'';
- $('app').innerHTML='<div class="sticky"><select id="fil" aria-label="Imóvel"><option value="">Todos os imóveis</option>'+L.map(r=>'<option value="'+r.id+'"'+(r.id===f?' selected':'')+'>'+esc(r.t)+'</option>').join('')+'</select><span class="note" style="margin:0">Cada exclusão atualiza o site em cerca de 1 minuto. Não dá para desfazer pelo painel.</span></div>'
- +L.filter(r=>!f||r.id===f).map(r=>'<section class="imv"><h2>'+esc(r.t)+'</h2><div class="where">'+esc(r.c||'')+' · <a href="/imovel/'+r.id+'/" target="_blank" rel="noopener">ver no site</a></div>'
+ $('app').innerHTML='<div class="sticky"><select id="fil" aria-label="Imóvel"><option value="">Todos os imóveis</option>'+L.map(r=>'<option value="'+r.id+'"'+(r.id===f?' selected':'')+'>'+esc(r.t)+'</option>').join('')+'</select><span class="note" style="margin:0">Cada exclusão atualiza o site em cerca de 2 minutos. Não dá para desfazer pelo painel.</span></div>'
+ +L.filter(r=>!f||r.id===f).map(r=>'<section class="imv"><h2>'+esc(r.t)+'</h2><div class="where">'+esc(r.c||'')+' · <a href="'+BASE+'/imovel/'+r.id+'/" target="_blank" rel="noopener">ver no site</a></div>'
  +(r.m.length?'<div class="mg">'+r.m.map((m,i)=>item(r,m,i)).join('')+'</div>':'<p class="note">Sem fotos ou vídeos.</p>')+'</section>').join('');
  $('fil').addEventListener('change',render)}
 $('app').addEventListener('click',async e=>{const b=e.target.closest('button');if(!b||!b.closest('.mi'))return;const box=b.closest('.mi'),bt=box.querySelector('.bt');
@@ -175,7 +197,7 @@ $('app').addEventListener('click',async e=>{const b=e.target.closest('button');i
  if(b.hasAttribute('data-ok')){if(busy){toast('Aguarde a exclusão anterior terminar');return}busy=true;b.disabled=true;b.textContent='Excluindo…';
   const [id,arquivo]=box.dataset.k.split('|');
   try{const r=await api({acao:'excluir',id,arquivo});
-   if(r.ok||r.status===404){gone.add(box.dataset.k);try{sessionStorage.setItem('adm-gone',JSON.stringify([...gone]))}catch(x){}box.classList.add('gone');bt.textContent='Excluída · sai do site em ~1 min';toast(r.ok?'Arquivo excluído':r.erro)}
+   if(r.ok||r.status===404){gone.add(box.dataset.k);try{sessionStorage.setItem('adm-gone',JSON.stringify([...gone]))}catch(x){}box.classList.add('gone');bt.textContent='Excluída · sai do site em ~2 min';toast(r.ok?'Arquivo excluído':r.erro)}
    else{if(r.status===401){senha='';try{sessionStorage.removeItem('adm-s')}catch(x){}location.reload();return}bt.innerHTML='<button type="button" data-del>Excluir</button>';toast(r.erro||'Não foi possível excluir')}
   }catch(x){bt.innerHTML='<button type="button" data-del>Excluir</button>';toast('Sem conexão. Tente de novo.')}
   busy=false}});
@@ -194,5 +216,5 @@ fs.writeFileSync(path.join(OUT, 'index.html'), home());
 for (const r of all) { const d = path.join(OUT, 'imovel', r.id); fs.mkdirSync(d, { recursive: true }); fs.writeFileSync(path.join(d, 'index.html'), detail(r)); }
 fs.mkdirSync(path.join(OUT, 'admin'), { recursive: true });
 fs.writeFileSync(path.join(OUT, 'admin', 'index.html'), admin());
-fs.writeFileSync(path.join(OUT, '404.html'), head('Página não encontrada', '', abs('/og.png')) + `<main><div class="empty"><h2>Imóvel não encontrado</h2><p>Ele pode ter sido vendido ou removido.</p><p><a class="btn" href="/">Ver imóveis disponíveis</a></p></div></main>${foot}${fab(MSG_GERAL)}</body></html>`);
+fs.writeFileSync(path.join(OUT, '404.html'), head('Página não encontrada', '', abs(P('/og.png'))) + `<main><div class="empty"><h2>Imóvel não encontrado</h2><p>Ele pode ter sido vendido ou removido.</p><p><a class="btn" href="${P('/')}">Ver imóveis disponíveis</a></p></div></main>${foot}${fab(MSG_GERAL)}</body></html>`);
 console.log(`Site gerado: ${all.length} imóveis em dist/`);

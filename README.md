@@ -1,7 +1,14 @@
 # Sítios e Terrenos PE — catálogo público
 
-Site estático do catálogo de imóveis do @sitios.terrenos.pe, publicado no Netlify.
-Cada push neste repositório gera e publica o site automaticamente.
+Site estático do catálogo de imóveis do @sitios.terrenos.pe, publicado no GitHub Pages:
+https://joaopaulorbn-creator.github.io/sitios-terrenos-pe/
+
+Cada push na branch `main` roda `.github/workflows/pages.yml`, que gera o site e publica (1 a 2 minutos).
+
+## Área de gestão
+
+`/admin/` lista as mídias de cada imóvel e exclui uma por vez. Entra-se com um token fine-grained do GitHub
+com "Contents: Read and write" só neste repositório; cada exclusão vira um commit e o site é republicado.
 
 ## Como está organizado
 
@@ -9,7 +16,7 @@ Cada push neste repositório gera e publica o site automaticamente.
 - `data/config.json`: nome, @ do Instagram e WhatsApp de visitas.
 - `media/<id-do-imovel>/`: fotos e vídeos de cada imóvel.
 - `src/`: estilo, ícone e imagem de compartilhamento.
-- `build.js`: gera o site em `dist/` (o Netlify roda `node build.js`).
+- `build.js`: gera o site em `dist/` (`SITE_URL` e `BASE_PATH` vêm do GitHub Pages).
 
 ## Campos de cada imóvel
 

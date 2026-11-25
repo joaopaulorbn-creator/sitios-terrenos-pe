@@ -1,14 +1,5 @@
+# O site agora é publicado pelo GitHub Pages (.github/workflows/pages.yml).
+# Esta linha faz o Netlify pular os builds, para não gastar créditos enquanto o projeto antigo existir.
 [build]
-  command = "node build.js"
+  ignore = "exit 0"
   publish = "dist"
-
-[[headers]]
-  for = "/media/*"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-
-[[headers]]
-  for = "/admin/*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-    Cache-Control = "no-store"
