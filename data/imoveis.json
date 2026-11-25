@@ -1,5 +1,45 @@
 [
   {
+    "id": "sitio-saire-6ha-rio-nascentes",
+    "titulo": "Sítio com rio e 5 nascentes",
+    "tipo": "Sítio",
+    "status": "disponivel",
+    "destaque": false,
+    "cidade": "Sairé",
+    "local": "A 5 km da cidade de Sairé - PE",
+    "area": "6 hectares",
+    "preco": null,
+    "caracteristicas": [
+      "Rio passando na propriedade",
+      "5 nascentes de água mineral",
+      "Energia elétrica",
+      "Todo cercado",
+      "A 5 km da cidade",
+      "Vista aberta para os morros"
+    ],
+    "descricao": "Seis hectares em Sairé, com um vale verde, rio passando na propriedade e cinco nascentes de água mineral. Tem energia, é todo cercado e fica a 5 km da cidade. Espaço de sobra para plantar, criar animais ou construir a casa dos sonhos.",
+    "maps": "",
+    "instagram": "",
+    "fotos": [
+      "media/sitio-saire-6ha-rio-nascentes/foto-01.jpg",
+      "media/sitio-saire-6ha-rio-nascentes/foto-02.jpg",
+      "media/sitio-saire-6ha-rio-nascentes/foto-03.jpg",
+      "media/sitio-saire-6ha-rio-nascentes/foto-04.jpg",
+      "media/sitio-saire-6ha-rio-nascentes/foto-05.jpg",
+      "media/sitio-saire-6ha-rio-nascentes/foto-06.jpg",
+      "media/sitio-saire-6ha-rio-nascentes/foto-07.jpg",
+      "media/sitio-saire-6ha-rio-nascentes/foto-08.jpg",
+      "media/sitio-saire-6ha-rio-nascentes/foto-09.jpg",
+      "media/sitio-saire-6ha-rio-nascentes/foto-10.jpg",
+      "media/sitio-saire-6ha-rio-nascentes/foto-11.jpg",
+      "media/sitio-saire-6ha-rio-nascentes/foto-12.jpg"
+    ],
+    "videos": [
+      "media/sitio-saire-6ha-rio-nascentes/video-01.mp4"
+    ],
+    "criadoEm": "2026-11-25"
+  },
+  {
     "id": "sitio-amaraji-1ha-beira-pista",
     "titulo": "Sítio de 1 hectare na beira da pista em Amaraji",
     "tipo": "Sítio",
