@@ -1,5 +1,42 @@
 [
   {
+    "id": "sitio-saire-2-5ha-nascente",
+    "titulo": "Sítio com nascente e fruteiras",
+    "tipo": "Sítio",
+    "status": "disponivel",
+    "destaque": false,
+    "cidade": "Sairé",
+    "local": "A 4,5 km da cidade de Sairé - PE",
+    "area": "2,5 hectares",
+    "preco": 280000,
+    "caracteristicas": [
+      "Nascente própria",
+      "Todo cercado",
+      "Energia elétrica",
+      "Muitas fruteiras",
+      "A 4,5 km da cidade",
+      "Preço negociável"
+    ],
+    "descricao": "Dois hectares e meio em Sairé, com nascente própria, muitas fruteiras e vista para os morros. Todo cercado, com energia elétrica, a 4,5 km da cidade. Bom para casa de campo, plantar ou criar animais. Valor negociável.",
+    "maps": "",
+    "instagram": "",
+    "fotos": [
+      "media/sitio-saire-2-5ha-nascente/foto-01.jpg",
+      "media/sitio-saire-2-5ha-nascente/foto-02.jpg",
+      "media/sitio-saire-2-5ha-nascente/foto-03.jpg",
+      "media/sitio-saire-2-5ha-nascente/foto-04.jpg",
+      "media/sitio-saire-2-5ha-nascente/foto-05.jpg",
+      "media/sitio-saire-2-5ha-nascente/foto-06.jpg",
+      "media/sitio-saire-2-5ha-nascente/foto-07.jpg",
+      "media/sitio-saire-2-5ha-nascente/foto-08.jpg",
+      "media/sitio-saire-2-5ha-nascente/foto-09.jpg"
+    ],
+    "videos": [
+      "media/sitio-saire-2-5ha-nascente/video-01.mp4"
+    ],
+    "criadoEm": "2026-11-25"
+  },
+  {
     "id": "sitio-saire-6ha-rio-nascentes",
     "titulo": "Sítio com rio e 5 nascentes",
     "tipo": "Sítio",
