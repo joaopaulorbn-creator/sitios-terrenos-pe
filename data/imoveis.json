@@ -1,5 +1,51 @@
 [
   {
+    "id": "sitio-amaraji-1ha-beira-pista",
+    "titulo": "Sítio de 1 hectare na beira da pista em Amaraji",
+    "tipo": "Sítio",
+    "status": "disponivel",
+    "destaque": false,
+    "cidade": "Amaraji",
+    "local": "Beira da pista, próximo à Fazenda Amaraji",
+    "area": "1 hectare",
+    "preco": null,
+    "caracteristicas": [
+      "Casa com 3 quartos (1 suíte), sala ampla e terraço ao redor",
+      "2 piscinas",
+      "Cantinho do churrasco",
+      "Energia e internet cabeada",
+      "Caixa d'água que enche por gravidade",
+      "Cacimba próxima",
+      "Fruteiras: manga, caju, laranja e limão",
+      "Escriturado",
+      "Clima top e ventos bons"
+    ],
+    "descricao": "Sítio de 1 hectare na beira da pista, pertinho da Fazenda Amaraji. Casa boa para moradia e lazer, com 3 quartos (1 suíte), sala ampla e terraço ao redor, 2 piscinas e cantinho do churrasco com vista para a serra. Energia, internet, água por gravidade e escritura. Só falta um dono para dar um trato.",
+    "maps": "",
+    "instagram": "",
+    "fotos": [
+      "media/sitio-amaraji-1ha-beira-pista/foto-01.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-02.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-03.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-04.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-05.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-06.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-07.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-08.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-09.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-10.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-11.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-12.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-13.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-14.jpg",
+      "media/sitio-amaraji-1ha-beira-pista/foto-15.jpg"
+    ],
+    "videos": [
+      "media/sitio-amaraji-1ha-beira-pista/video-01.mp4"
+    ],
+    "criadoEm": "2026-11-25"
+  },
+  {
     "id": "mini-sitio-gloria-do-goita",
     "titulo": "Mini sítio com casa nova em Glória do Goitá",
     "tipo": "Sítio",
