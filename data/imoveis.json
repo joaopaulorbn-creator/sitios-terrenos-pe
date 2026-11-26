@@ -1,5 +1,38 @@
 [
   {
+    "id": "sitio-saire-33ha-braco-de-agua",
+    "titulo": "Sítio de 33 hectares com braço de água",
+    "tipo": "Sítio",
+    "status": "disponivel",
+    "destaque": false,
+    "cidade": "Sairé",
+    "local": "A 9 km da cidade de Sairé - PE",
+    "area": "33 hectares",
+    "preco": null,
+    "caracteristicas": [
+      "Braço de água com mais de 1 km cortando o sítio",
+      "Água de nascente",
+      "Todo cercado",
+      "Escriturado",
+      "A 9 km da cidade"
+    ],
+    "descricao": "Trinta e três hectares em Sairé, com um braço de água de mais de 1 km que corta boa parte do sítio e água de nascente dentro da propriedade. Todo cercado e escriturado, a 9 km da cidade.",
+    "maps": "",
+    "instagram": "",
+    "fotos": [
+      "media/sitio-saire-33ha-braco-de-agua/foto-01.jpg",
+      "media/sitio-saire-33ha-braco-de-agua/foto-02.jpg",
+      "media/sitio-saire-33ha-braco-de-agua/foto-03.jpg",
+      "media/sitio-saire-33ha-braco-de-agua/foto-04.jpg",
+      "media/sitio-saire-33ha-braco-de-agua/foto-05.jpg",
+      "media/sitio-saire-33ha-braco-de-agua/foto-06.jpg"
+    ],
+    "videos": [
+      "media/sitio-saire-33ha-braco-de-agua/video-01.mp4"
+    ],
+    "criadoEm": "2026-11-26"
+  },
+  {
     "id": "sitio-saire-2-5ha-nascente",
     "titulo": "Sítio com nascente e fruteiras",
     "tipo": "Sítio",
