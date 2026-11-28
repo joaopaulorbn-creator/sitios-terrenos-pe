@@ -1,8 +1,8 @@
 [
   {
     "id": "sitio-saire-33ha-braco-de-agua",
-    "titulo": "Sítio de 33 hectares com braço de água",
-    "tipo": "Sítio",
+    "titulo": "Fazenda de 33 hectares com braço de água",
+    "tipo": "Fazenda",
     "status": "disponivel",
     "destaque": false,
     "cidade": "Sairé",
@@ -28,6 +28,7 @@
       "media/sitio-saire-33ha-braco-de-agua/foto-06.jpg"
     ],
     "videos": [
+      "media/sitio-saire-33ha-braco-de-agua/video-02.mp4",
       "media/sitio-saire-33ha-braco-de-agua/video-01.mp4"
     ],
     "criadoEm": "2026-11-26"
